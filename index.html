@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="number" placeholder="Input Angka" id="nomor" onchange="updateNomor(this)">
+    <br>
+    <br>
+    <button onclick="generateSegitiga()">Generate Segitiga</button>
+    <button onclick="generateBilanganGanjil()">Generate Bilangan Ganjil</button>
+    <button onclick="generateBilanganPrima()">Generate Bilangan Prima</button>
+    <h1><strong>Result :</strong></h1>
+    <p id="result"></p>
+</body>
+<script>
+    let hasilText = document.getElementById("result");
+    let nomor = 0;
+
+    function updateNomor(n){
+        nomor = n.value
+    }
+    
+    function generateSegitiga() {
+        let result = [];
+        for (let i = 0; i < nomor.length; i++){
+            temp = nomor[i];
+            for (let j = 0; j <= i; j++){
+                temp += "0";
+            }
+            result.push(temp);
+        }
+        hasilText.innerHTML = result.join("<br>")
+
+    }
+function generateBilanganGanjil(){
+    let result = [];
+    for (let i = 1; i < nomor; i += 2){
+        result.push(i);
+    }
+    hasilText.innerHTML = result.join("<br>")
+} 
+function generateBilanganPrima(){
+    let result = [];
+    for (let i = 2; i <= nomor; i++){
+        let p = 0;
+        for (let j = 2; j < i; j++){
+            if (i % j == 0){
+                p = 1;
+                break
+            }
+        }
+        if (p == 0){
+            result.push(i)
+        }
+        hasilText.innerHTML = result.join("<br>")
+    }
+}
+    
+</script>
+</html>
